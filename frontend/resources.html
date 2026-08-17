@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resource Management</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Production Planning Platform</h1>
+        <p>Machine Resource Management</p>
+    </header>
+
+    <main>
+
+        <h2>Machine Status</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Machine</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Machine 1</td>
+                    <td>Available</td>
+                </tr>
+
+                <tr>
+                    <td>Machine 2</td>
+                    <td>In Use</td>
+                </tr>
+
+                <tr>
+                    <td>Machine 3</td>
+                    <td>Maintenance</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="resource-title">Assign Machine</h2>
+
+        <div class="resource-form">
+
+            <label for="machine">Select Machine</label>
+
+            <select id="machine">
+                <option>Machine 1</option>
+                <option>Machine 2</option>
+                <option>Machine 3</option>
+            </select>
+
+            <button onclick="assignMachine()">
+                Assign Machine
+            </button>
+
+            <div id="machineResult"></div>
+
+        </div>
+
+    </main>
+
+    <script src="resources.js"></script>
+
+</body>
+</html>

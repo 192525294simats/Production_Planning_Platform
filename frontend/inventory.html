@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Inventory Management</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Production Planning Platform</h1>
+        <p>Inventory Management</p>
+    </header>
+
+    <main>
+
+        <h2>Material Inventory</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Material</th>
+                    <th>Available Quantity</th>
+                    <th>Unit</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Steel</td>
+                    <td>500</td>
+                    <td>kg</td>
+                    <td>Available</td>
+                </tr>
+
+                <tr>
+                    <td>Plastic</td>
+                    <td>300</td>
+                    <td>kg</td>
+                    <td>Available</td>
+                </tr>
+
+                <tr>
+                    <td>Aluminium</td>
+                    <td>200</td>
+                    <td>kg</td>
+                    <td>Available</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <h2 class="check-title">Check Material Availability</h2>
+
+        <div class="inventory-check">
+
+            <label for="material">Select Material:</label>
+
+            <select id="material">
+                <option value="Steel">Steel</option>
+                <option value="Plastic">Plastic</option>
+                <option value="Aluminium">Aluminium</option>
+            </select>
+
+            <label for="required">Required Quantity (kg):</label>
+
+            <input type="number" id="required" placeholder="Enter quantity">
+
+            <button onclick="checkInventory()">
+                Check Availability
+            </button>
+
+            <div id="result"></div>
+
+        </div>
+
+    </main>
+
+    <script src="inventory.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Work Orders</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Production Planning Platform</h1>
+        <p>Work Order Management</p>
+    </header>
+
+    <main>
+
+        <h2>Work Orders</h2>
+
+        <div class="workorder-form">
+
+            <label for="orderId">Work Order ID</label>
+            <input type="text" id="orderId" value="WO-101">
+
+            <label for="product">Product</label>
+            <select id="product">
+                <option>Product A</option>
+                <option>Product B</option>
+                <option>Product C</option>
+            </select>
+
+            <label for="quantity">Quantity</label>
+            <input type="number" id="quantity" value="100">
+
+            <label for="status">Status</label>
+            <select id="status">
+                <option>Not Started</option>
+                <option>In Progress</option>
+                <option>Completed</option>
+                <option>Delayed</option>
+            </select>
+
+            <button onclick="createWorkOrder()">
+                Create Work Order
+            </button>
+
+        </div>
+
+        <h2 class="orders-title">Work Order Status</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Work Order</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody id="workOrderTable">
+
+            </tbody>
+        </table>
+
+    </main>
+
+    <script src="workorders.js"></script>
+
+</body>
+</html>

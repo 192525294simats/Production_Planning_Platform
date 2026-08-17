@@ -90,3 +90,285 @@ th {
 tr:hover {
     background-color: #f1f5f9;
 }
+.check-title {
+    margin-top: 35px;
+}
+
+.inventory-check {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+
+.inventory-check label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.inventory-check select,
+.inventory-check input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.inventory-check button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2563eb;
+    color: white;
+    cursor: pointer;
+}
+
+#result {
+    margin-top: 20px;
+    padding: 15px;
+    font-weight: bold;
+}
+.schedule-form {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+.schedule-form label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.schedule-form input,
+.schedule-form select {
+    width: 100%;
+    padding: 10px;
+}
+
+.schedule-form button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2563eb;
+    color: white;
+    cursor: pointer;
+}
+
+#scheduleResult {
+    margin-top: 20px;
+    font-weight: bold;
+}
+.workorder-form {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+.workorder-form label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.workorder-form input,
+.workorder-form select {
+    width: 100%;
+    padding: 10px;
+}
+
+.workorder-form button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2563eb;
+    color: white;
+    cursor: pointer;
+}
+
+.orders-title {
+    margin-top: 35px;
+}
+.resource-title {
+    margin-top: 35px;
+}
+
+.resource-form {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+.resource-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.resource-form select {
+    width: 100%;
+    padding: 10px;
+}
+
+.resource-form button {
+    margin-top: 15px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2563eb;
+    color: white;
+    cursor: pointer;
+}
+
+#machineResult {
+    margin-top: 20px;
+    font-weight: bold;
+}
+.workforce-title {
+    margin-top: 35px;
+}
+
+.workforce-form {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+.workforce-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.workforce-form select {
+    width: 100%;
+    padding: 10px;
+}
+
+.workforce-form button {
+    margin-top: 15px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2563eb;
+    color: white;
+    cursor: pointer;
+}
+
+#workerResult {
+    margin-top: 20px;
+    font-weight: bold;
+}
+.bottleneck-form {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+.bottleneck-form label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.bottleneck-form input,
+.bottleneck-form select {
+    width: 100%;
+    padding: 10px;
+}
+
+.bottleneck-form button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2563eb;
+    color: white;
+    cursor: pointer;
+}
+
+#bottleneckResult {
+    margin-top: 20px;
+    padding: 15px;
+    font-weight: bold;
+    line-height: 2;
+}
+.notifications {
+    max-width: 800px;
+    margin-top: 20px;
+}
+
+.notification {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    font-weight: bold;
+}
+
+.notification.warning {
+    border-left: 6px solid #f59e0b;
+}
+
+.notification.success {
+    border-left: 6px solid #16a34a;
+}
+.report-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.report-card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.report-card h3 {
+    margin-bottom: 15px;
+}
+
+.report-card p {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.report-title {
+    margin-top: 40px;
+}
+
+@media (max-width: 800px) {
+
+    .report-grid {
+        grid-template-columns: 1fr;
+    }
+
+}

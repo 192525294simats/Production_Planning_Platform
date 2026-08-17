@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Workforce Management</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Production Planning Platform</h1>
+        <p>Workforce Management</p>
+    </header>
+
+    <main>
+
+        <h2>Worker Status</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Worker</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Worker 1</td>
+                    <td>Available</td>
+                </tr>
+
+                <tr>
+                    <td>Worker 2</td>
+                    <td>Assigned</td>
+                </tr>
+
+                <tr>
+                    <td>Worker 3</td>
+                    <td>Available</td>
+                </tr>
+
+                <tr>
+                    <td>Worker 4</td>
+                    <td>On Leave</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="workforce-title">Assign Worker</h2>
+
+        <div class="workforce-form">
+
+            <label for="worker">Select Worker</label>
+
+            <select id="worker">
+                <option>Worker 1</option>
+                <option>Worker 2</option>
+                <option>Worker 3</option>
+                <option>Worker 4</option>
+            </select>
+
+            <button onclick="assignWorker()">
+                Assign Worker
+            </button>
+
+            <div id="workerResult"></div>
+
+        </div>
+
+    </main>
+
+    <script src="workforce.js"></script>
+
+</body>
+</html>
