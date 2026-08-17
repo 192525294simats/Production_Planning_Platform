@@ -68,3 +68,25 @@ main h2 {
     font-size: 35px;
     font-weight: bold;
 }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    margin-top: 20px;
+}
+
+th,
+td {
+    padding: 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background-color: #1f2937;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f1f5f9;
+}
