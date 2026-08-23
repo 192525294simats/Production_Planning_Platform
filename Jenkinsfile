@@ -10,26 +10,26 @@ pipeline {
             }
         }
 
-        stage('Build Backend Docker Image') {
+        stage('Build Backend') {
             steps {
                 sh 'docker build -t production-planning-backend ./backend'
             }
         }
 
-        stage('Build Frontend Docker Image') {
+        stage('Build Frontend') {
             steps {
                 sh 'docker build -t production-planning-frontend ./frontend'
             }
         }
 
-        stage('Run Backend Container') {
+        stage('Run Backend') {
             steps {
                 sh 'docker rm -f production-planning-backend-ci 2>/dev/null || true'
                 sh 'docker run -d --name production-planning-backend-ci -p 5001:5000 production-planning-backend'
             }
         }
 
-        stage('Run Frontend Container') {
+        stage('Run Frontend') {
             steps {
                 sh 'docker rm -f production-planning-frontend-ci 2>/dev/null || true'
                 sh 'docker run -d --name production-planning-frontend-ci -p 8082:80 production-planning-frontend'
