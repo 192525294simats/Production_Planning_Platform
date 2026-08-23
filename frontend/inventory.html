@@ -1,89 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Inventory Management</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <header>
-        <h1>Production Planning Platform</h1>
-        <p>Inventory Management</p>
-    </header>
+<header>
+    <h1>Production Planning & Digital Factory</h1>
+    <p>Inventory Management</p>
+</header>
 
-    <main>
+<nav>
+    <a href="index.html">Dashboard</a>
+    <a href="orders.html">Production Orders</a>
+    <a href="inventory.html">Inventory</a>
+    <a href="resources.html">Resources</a>
+    <a href="reports.html">Reports</a>
+</nav>
 
-        <h2>Material Inventory</h2>
+<main>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Material</th>
-                    <th>Available Quantity</th>
-                    <th>Unit</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
+    <h2>Inventory Availability</h2>
 
-            <tbody>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Item</th>
+                <th>Stock Quantity</th>
+                <th>Reorder Level</th>
+                <th>Status</th>
+            </tr>
+        </thead>
 
-                <tr>
-                    <td>Steel</td>
-                    <td>500</td>
-                    <td>kg</td>
-                    <td>Available</td>
-                </tr>
+        <tbody id="inventoryTable">
+            <tr>
+                <td colspan="5">Loading...</td>
+            </tr>
+        </tbody>
+    </table>
 
-                <tr>
-                    <td>Plastic</td>
-                    <td>300</td>
-                    <td>kg</td>
-                    <td>Available</td>
-                </tr>
+</main>
 
-                <tr>
-                    <td>Aluminium</td>
-                    <td>200</td>
-                    <td>kg</td>
-                    <td>Available</td>
-                </tr>
+<script>
 
-            </tbody>
-        </table>
+async function loadInventory() {
 
-        <h2 class="check-title">Check Material Availability</h2>
+    const response =
+        await fetch("http://localhost:5000/api/inventory");
 
-        <div class="inventory-check">
+    const inventory = await response.json();
 
-            <label for="material">Select Material:</label>
+    const table =
+        document.getElementById("inventoryTable");
 
-            <select id="material">
-                <option value="Steel">Steel</option>
-                <option value="Plastic">Plastic</option>
-                <option value="Aluminium">Aluminium</option>
-            </select>
+    table.innerHTML = "";
 
-            <label for="required">Required Quantity (kg):</label>
+    inventory.forEach(item => {
 
-            <input type="number" id="required" placeholder="Enter quantity">
+        const row = `
+            <tr>
+                <td>${item.id}</td>
+                <td>${item.item_name}</td>
+                <td>${item.stock_quantity}</td>
+                <td>${item.reorder_level}</td>
+                <td class="status">${item.status}</td>
+            </tr>
+        `;
 
-            <button onclick="checkInventory()">
-                Check Availability
-            </button>
+        table.innerHTML += row;
+    });
+}
 
-            <div id="result"></div>
+loadInventory();
 
-        </div>
-
-    </main>
-
-    <script src="inventory.js"></script>
+</script>
 
 </body>
 </html>

@@ -1,0 +1,43 @@
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: factory-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    container_name: factory-backend
+    ports:
+      - "5000:5000"
+    environment:
+      DB_HOST: database
+      DB_NAME: factorydb
+      DB_USER: factoryuser
+      DB_PASSWORD: factorypass
+      DB_PORT: 5432
+    depends_on:
+      database:
+        condition: service_healthy
+
+  database:
+    image: postgres:16
+    container_name: factory-database
+    environment:
+      POSTGRES_DB: factorydb
+      POSTGRES_USER: factoryuser
+      POSTGRES_PASSWORD: factorypass
+    volumes:
+      - factory_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U factoryuser -d factorydb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  factory_data:

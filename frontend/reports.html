@@ -1,94 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Production Reports</title>
-
+    <title>Operational Reports</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <header>
-        <h1>Production Planning Platform</h1>
-        <p>Production Reports</p>
-    </header>
+<header>
+    <h1>Production Planning & Digital Factory</h1>
+    <p>Operational Reports</p>
+</header>
 
-    <main>
+<nav>
+    <a href="index.html">Dashboard</a>
+    <a href="orders.html">Production Orders</a>
+    <a href="inventory.html">Inventory</a>
+    <a href="resources.html">Resources</a>
+    <a href="reports.html">Reports</a>
+</nav>
 
-        <h2>Production Performance Report</h2>
+<main>
 
-        <div class="report-grid">
+    <h2>Factory Performance Reports</h2>
 
-            <div class="report-card">
-                <h3>Total Production</h3>
-                <p>1,250 units</p>
-            </div>
+    <div class="cards">
 
-            <div class="report-card">
-                <h3>Completed Orders</h3>
-                <p>18</p>
-            </div>
-
-            <div class="report-card">
-                <h3>Delayed Orders</h3>
-                <p>3</p>
-            </div>
-
-            <div class="report-card">
-                <h3>Available Machines</h3>
-                <p>8</p>
-            </div>
-
-            <div class="report-card">
-                <h3>Machines in Use</h3>
-                <p>5</p>
-            </div>
-
-            <div class="report-card">
-                <h3>Inventory Shortages</h3>
-                <p>2</p>
-            </div>
-
+        <div class="card">
+            <h3>Total Orders</h3>
+            <p id="totalOrders">Loading...</p>
         </div>
 
-        <h2 class="report-title">Resource Utilization</h2>
+        <div class="card">
+            <h3>Active Orders</h3>
+            <p id="activeOrders">Loading...</p>
+        </div>
+
+        <div class="card">
+            <h3>Low Stock Items</h3>
+            <p id="lowStock">Loading...</p>
+        </div>
+
+    </div>
+
+    <section class="panel">
+
+        <h2>Resource Performance</h2>
 
         <table>
 
             <thead>
                 <tr>
                     <th>Resource</th>
-                    <th>Total</th>
-                    <th>In Use</th>
                     <th>Utilization</th>
+                    <th>Availability</th>
                 </tr>
             </thead>
 
-            <tbody>
-
+            <tbody id="resourceReport">
                 <tr>
-                    <td>Machines</td>
-                    <td>13</td>
-                    <td>5</td>
-                    <td>38%</td>
+                    <td colspan="3">Loading...</td>
                 </tr>
-
-                <tr>
-                    <td>Workforce</td>
-                    <td>20</td>
-                    <td>12</td>
-                    <td>60%</td>
-                </tr>
-
             </tbody>
 
         </table>
 
-    </main>
+    </section>
+
+</main>
+
+<script>
+
+async function loadReports() {
+
+    const ordersResponse =
+        await fetch("http://localhost:5000/api/orders");
+
+    const orders =
+        await ordersResponse.json();
+
+    const inventoryResponse =
+        await fetch("http://localhost:5000/api/inventory");
+
+    const inventory =
+        await inventoryResponse.json();
+
+    const resourcesResponse =
+        await fetch("http://localhost:5000/api/resources");
+
+    const resources =
+        await resourcesResponse.json();
+
+
+    document.getElementById("totalOrders").innerText =
+        orders.length;
+
+
+    const active =
+        orders.filter(order =>
+            order.status === "In Progress"
+        ).length;
+
+    document.getElementById("activeOrders").innerText =
+        active;
+
+
+    const lowStock =
+        inventory.filter(item =>
+            item.status === "REORDER"
+        ).length;
+
+    document.getElementById("lowStock").innerText =
+        lowStock;
+
+
+    const table =
+        document.getElementById("resourceReport");
+
+    table.innerHTML = "";
+
+    resources.forEach(resource => {
+
+        table.innerHTML += `
+            <tr>
+                <td>${resource.resource_name}</td>
+                <td>${resource.utilization}%</td>
+                <td>${resource.availability}</td>
+            </tr>
+        `;
+
+    });
+
+}
+
+loadReports();
+
+</script>
 
 </body>
 </html>

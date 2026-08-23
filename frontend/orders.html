@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Production Orders</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>Production Planning & Digital Factory</h1>
+    <p>Production Orders</p>
+</header>
+
+<nav>
+    <a href="index.html">Dashboard</a>
+    <a href="orders.html">Production Orders</a>
+    <a href="inventory.html">Inventory</a>
+    <a href="resources.html">Resources</a>
+    <a href="reports.html">Reports</a>
+</nav>
+
+<main>
+
+    <h2>Production Orders</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Production Line</th>
+                <th>Status</th>
+                <th>Due Date</th>
+            </tr>
+        </thead>
+
+        <tbody id="ordersTable">
+            <tr>
+                <td colspan="6">Loading...</td>
+            </tr>
+        </tbody>
+    </table>
+
+</main>
+
+<script>
+
+async function loadOrders() {
+
+    const response = await fetch("http://localhost:5000/api/orders");
+    const orders = await response.json();
+
+    const table = document.getElementById("ordersTable");
+
+    table.innerHTML = "";
+
+    orders.forEach(order => {
+
+        const row = `
+            <tr>
+                <td>${order.id}</td>
+                <td>${order.product_name}</td>
+                <td>${order.quantity}</td>
+                <td>${order.production_line}</td>
+                <td class="status">${order.status}</td>
+                <td>${order.due_date}</td>
+            </tr>
+        `;
+
+        table.innerHTML += row;
+    });
+}
+
+loadOrders();
+
+</script>
+
+</body>
+</html>

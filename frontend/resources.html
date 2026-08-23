@@ -1,75 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Resource Management</title>
-
+    <title>Manufacturing Resources</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <header>
-        <h1>Production Planning Platform</h1>
-        <p>Machine Resource Management</p>
-    </header>
+<header>
+    <h1>Production Planning & Digital Factory</h1>
+    <p>Manufacturing Resource Monitoring</p>
+</header>
 
-    <main>
+<nav>
+    <a href="index.html">Dashboard</a>
+    <a href="orders.html">Production Orders</a>
+    <a href="inventory.html">Inventory</a>
+    <a href="resources.html">Resources</a>
+    <a href="reports.html">Reports</a>
+</nav>
 
-        <h2>Machine Status</h2>
+<main>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Machine</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
+    <h2>Manufacturing Resources</h2>
 
-            <tbody>
-                <tr>
-                    <td>Machine 1</td>
-                    <td>Available</td>
-                </tr>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Resource</th>
+                <th>Utilization (%)</th>
+                <th>Availability</th>
+            </tr>
+        </thead>
 
-                <tr>
-                    <td>Machine 2</td>
-                    <td>In Use</td>
-                </tr>
+        <tbody id="resourcesTable">
+            <tr>
+                <td colspan="4">Loading...</td>
+            </tr>
+        </tbody>
+    </table>
 
-                <tr>
-                    <td>Machine 3</td>
-                    <td>Maintenance</td>
-                </tr>
-            </tbody>
-        </table>
+</main>
 
-        <h2 class="resource-title">Assign Machine</h2>
+<script>
 
-        <div class="resource-form">
+async function loadResources() {
 
-            <label for="machine">Select Machine</label>
+    const response =
+        await fetch("http://localhost:5000/api/resources");
 
-            <select id="machine">
-                <option>Machine 1</option>
-                <option>Machine 2</option>
-                <option>Machine 3</option>
-            </select>
+    const resources = await response.json();
 
-            <button onclick="assignMachine()">
-                Assign Machine
-            </button>
+    const table =
+        document.getElementById("resourcesTable");
 
-            <div id="machineResult"></div>
+    table.innerHTML = "";
 
-        </div>
+    resources.forEach(resource => {
 
-    </main>
+        const row = `
+            <tr>
+                <td>${resource.id}</td>
+                <td>${resource.resource_name}</td>
+                <td>${resource.utilization}</td>
+                <td>${resource.availability}</td>
+            </tr>
+        `;
 
-    <script src="resources.js"></script>
+        table.innerHTML += row;
+    });
+}
+
+loadResources();
+
+</script>
 
 </body>
 </html>

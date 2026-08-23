@@ -4,58 +4,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Production Planning Platform</title>
+    <title>Production Planning Dashboard</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <header>
-        <h1>Production Planning Platform</h1>
-        <p>Digital Factory Operations Dashboard</p>
-    </header>
+<header>
+    <h1>Production Planning & Digital Factory</h1>
+    <p>Manufacturing Operations Dashboard</p>
+</header>
 
-    <nav>
-        <button>Production</button>
-        <button>Inventory</button>
-        <button>Resources</button>
-        <button>Workforce</button>
-        <button>Work Orders</button>
-        <button>Reports</button>
-    </nav>
+<nav>
+    <a href="index.html">Dashboard</a>
+    <a href="orders.html">Production Orders</a>
+    <a href="inventory.html">Inventory</a>
+    <a href="resources.html">Resources</a>
+    <a href="reports.html">Reports</a>
+</nav>
 
-    <main>
+<main>
 
-        <h2>Production Status</h2>
+    <h2>Factory Dashboard</h2>
 
-        <div class="dashboard">
+    <div class="cards">
 
-            <div class="card">
-                <h3>Scheduled</h3>
-                <p>25</p>
-            </div>
-
-            <div class="card">
-                <h3>In Progress</h3>
-                <p>12</p>
-            </div>
-
-            <div class="card">
-                <h3>Completed</h3>
-                <p>18</p>
-            </div>
-
-            <div class="card">
-                <h3>Delayed</h3>
-                <p>3</p>
-            </div>
-
+        <div class="card">
+            <h3>Production Orders</h3>
+            <p id="ordersCount">Loading...</p>
         </div>
 
-    </main>
+        <div class="card">
+            <h3>Inventory Items</h3>
+            <p id="inventoryCount">Loading...</p>
+        </div>
 
-    <script src="script.js"></script>
+        <div class="card">
+            <h3>Manufacturing Resources</h3>
+            <p id="resourcesCount">Loading...</p>
+        </div>
+
+    </div>
+
+    <section class="panel">
+
+        <h2>System Overview</h2>
+
+        <p>&#10003; Production scheduling</p>
+        <p>&#10003; Inventory monitoring</p>
+        <p>&#10003; Resource utilization</p>
+        <p>&#10003; Manufacturing reports</p>
+        <p>&#10003; Digital factory operations</p>
+
+    </section>
+
+</main>
+
+<script>
+
+const API = "http://localhost:5000";
+
+async function loadDashboard() {
+
+    try {
+
+        const ordersResponse =
+            await fetch(API + "/api/orders");
+
+        const orderData =
+            await ordersResponse.json();
+
+
+        const inventoryResponse =
+            await fetch(API + "/api/inventory");
+
+        const inventoryData =
+            await inventoryResponse.json();
+
+
+        const resourcesResponse =
+            await fetch(API + "/api/resources");
+
+        const resourceData =
+            await resourcesResponse.json();
+
+
+        document.getElementById("ordersCount").innerText =
+            orderData.length;
+
+        document.getElementById("inventoryCount").innerText =
+            inventoryData.length;
+
+        document.getElementById("resourcesCount").innerText =
+            resourceData.length;
+
+
+    } catch (error) {
+
+        console.error(
+            "Backend connection error:",
+            error
+        );
+
+        document.getElementById("ordersCount").innerText = "Error";
+        document.getElementById("inventoryCount").innerText = "Error";
+        document.getElementById("resourcesCount").innerText = "Error";
+
+    }
+}
+
+loadDashboard();
+
+</script>
 
 </body>
 </html>
