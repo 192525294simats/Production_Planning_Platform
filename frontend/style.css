@@ -6,13 +6,13 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #f4f6f8;
+    background: blue;
     color: #222;
 }
 
 header {
     background: #1f2937;
-    color: white;
+    color: blue;
     padding: 25px;
     text-align: center;
 }
@@ -28,7 +28,7 @@ nav {
 }
 
 nav a {
-    color: white;
+    color: blue;
     text-decoration: none;
     margin: 0 15px;
     font-weight: bold;
