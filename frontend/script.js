@@ -3,15 +3,15 @@ console.log("Production Planning Platform loaded successfully.");
 async function loadDashboardData() {
     try {
         // Get production orders
-        const ordersResponse = await fetch("/api/orders");
+        const ordersResponse = await fetch("http://localhost:5001/api/orders");
         const orders = await ordersResponse.json();
 
         // Get inventory
-        const inventoryResponse = await fetch("/api/inventory");
+        const inventoryResponse = await fetch("http://localhost:5001/api/inventory");
         const inventory = await inventoryResponse.json();
 
         // Get resources
-        const resourcesResponse = await fetch("/api/resources");
+        const resourcesResponse = await fetch("http://localhost:5001/api/resources");
         const resources = await resourcesResponse.json();
 
         // Display counts
