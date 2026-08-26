@@ -74,19 +74,19 @@
 async function loadReports() {
 
     const ordersResponse =
-        await fetch("http://localhost:5000/api/orders");
+        await fetch("http://localhost:5001/api/orders");
 
     const orders =
         await ordersResponse.json();
 
     const inventoryResponse =
-        await fetch("http://localhost:5000/api/inventory");
+        await fetch("http://localhost:5001/api/inventory");
 
     const inventory =
         await inventoryResponse.json();
 
     const resourcesResponse =
-        await fetch("http://localhost:5000/api/resources");
+        await fetch("http://localhost:5001/api/resources");
 
     const resources =
         await resourcesResponse.json();

@@ -86,7 +86,7 @@ h2 {
 table {
     width: 100%;
     border-collapse: collapse;
-    background: white;
+    background: rgb(46, 140, 14);
     box-shadow: 0 2px 8px #ccc;
 }
 

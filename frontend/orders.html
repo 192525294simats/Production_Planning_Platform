@@ -49,7 +49,7 @@
 
 async function loadOrders() {
 
-    const response = await fetch("http://localhost:5000/api/orders");
+    const response = await fetch("http://localhost:5001/api/orders");
     const orders = await response.json();
 
     const table = document.getElementById("ordersTable");

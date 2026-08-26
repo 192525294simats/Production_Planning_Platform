@@ -49,7 +49,7 @@
 async function loadInventory() {
 
     const response =
-        await fetch("http://localhost:5000/api/inventory");
+        await fetch("http://localhost:5001/api/inventory");
 
     const inventory = await response.json();
 
